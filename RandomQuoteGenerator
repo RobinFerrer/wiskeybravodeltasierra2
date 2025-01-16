@@ -1,0 +1,4 @@
+
+
+<div id="quote">Click the button to generate a quote!</div>
+<button id="new-quote">New Quote</button>
