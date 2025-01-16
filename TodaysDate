@@ -1,8 +1,8 @@
-<!-- html block -->
+--------------------------------------- HTML ---------------------------------------
 
 <div id="date">Loading today's date...</div>
 
-<!-- javascript -->
+------------------------------------ JAVASCRIPT ------------------------------------
 
 // Function to format the date
 function formatDate(date) {
@@ -30,8 +30,8 @@ function displayTodaysDate() {
 // Add an event listener to run the displayTodaysDate function when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', displayTodaysDate);
 
+-------------------------------------- UITLEG --------------------------------------
 
-Explanation of the JavaScript Code
   1) Function to Format the Date:
       - We define a function called formatDate that takes a Date object as an argument.
       - Inside this function, we extract the day, month, and year from the Date object using the appropriate methods:
@@ -47,5 +47,5 @@ Explanation of the JavaScript Code
       - Finally, we update the text content of the HTML element with the ID date to display the formatted date.
   
   3) Event Listener for DOMContentLoaded:
-      - We add an event listener to the document that listens for the DOMContentLoaded event. This event fires when the initial HTML document has been completely loaded and parsed.
+      - We add an event listener to the document that listens for the         DOMContentLoaded event. This event fires when the initial HTML document has been completely loaded and parsed.
       - When this event occurs, the displayTodaysDate function is called, which displays today's date.
