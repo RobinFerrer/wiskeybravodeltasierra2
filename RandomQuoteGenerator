@@ -1,4 +1,46 @@
-
+<!-- html block -->
 
 <div id="quote">Click the button to generate a quote!</div>
 <button id="new-quote">New Quote</button>
+
+<!-- javascript -->
+
+const quotes = [
+    "The greatest glory in living lies not in never falling, but in rising every time we fall",
+    "Believe you can and you're halfway there.",
+    "It does not matter how slowly you go as long as you do not stop.",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts",
+    "You don't have to be great to start, but you have to start to be great"
+];
+
+function generateRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+
+    const randomQuote = quotes[randomIndex];
+
+    document.getElementById('quote').textContent = randomQuote;
+}
+
+document.getElementById('new-quote').addEventListener('click', generateRandomQuote);
+
+generateRandomQuote();
+
+
+Explanation of the JavaScript Code
+  1) Array of Quotes:
+      - We create an array called quotes that contains a list of quotes. Each quote is a string.
+  
+  2) Function to Generate a Random Quote:
+      - We define a function called generateRandomQuote.
+      - Inside this function, we calculate a random index using Math.random() and Math.floor(). This gives us a random integer between 0 and the length of the quotes array minus one.
+      - We then use this random index to select a quote from the quotes array.
+      - Finally, we update the text content of the HTML element with the ID quote to display the selected quote.
+  
+  3) Event Listener:
+      - We add an event listener to the button with the ID new-quote. When the button is clicked, it calls the generateRandomQuote function.
+  
+  4) Initial Quote Generation:
+      - We call generateRandomQuote() once when the page loads to display an initial quote.
+
+
+
