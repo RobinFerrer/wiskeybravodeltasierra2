@@ -1,0 +1,34 @@
+@font-face {
+    font-family: "Snell Roundhand W01 Script";
+    src: url("https://db.onlinewebfonts.com/t/f8deb3c1a029ec56b15bb462c1518f07.eot");
+    src:
+        url("https://db.onlinewebfonts.com/t/f8deb3c1a029ec56b15bb462c1518f07.eot?#iefix")
+            format("embedded-opentype"),
+        url("https://db.onlinewebfonts.com/t/f8deb3c1a029ec56b15bb462c1518f07.woff2")
+            format("woff2"),
+        url("https://db.onlinewebfonts.com/t/f8deb3c1a029ec56b15bb462c1518f07.woff")
+            format("woff"),
+        url("https://db.onlinewebfonts.com/t/f8deb3c1a029ec56b15bb462c1518f07.ttf")
+            format("truetype"),
+        url("https://db.onlinewebfonts.com/t/f8deb3c1a029ec56b15bb462c1518f07.svg#Snell Roundhand W01 Script")
+            format("svg");
+}
+
+@font-face {
+    font-family: "lulo-one", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    src: url(https://use.typekit.net/znp3hac.css);
+}
+
+:root {
+    --color-bg-light: rgb(247, 246, 240); /* alabaster */
+    --color-text-light: #0a7b5fff; /* viridian */
+    --color-accent-light: #f3a3c6ff; /* carnation pink */
+    --color-bg-dark: rgb(208, 191, 168); /* khaki */
+    --color-text-dark: #264e43ff; /* brunswick green */
+    --color-accent-dark: #ee343dff; /* imperial red */
+    --title-font: "Snell Roundhand W01 Script", cursive;
+    --logo-font: "lulo-one", sans-serif;
+    --body-font: "Poppins", sans-serif;
+}
