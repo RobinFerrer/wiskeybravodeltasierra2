@@ -45,6 +45,7 @@ generateRandomQuote();
 
 -------------------------------------- CURSUS --------------------------------------
 
+HEAD:
 <script type="text/javascript">
   writeRandomQuote = function () {
     var quotes = new Array();
@@ -58,7 +59,12 @@ generateRandomQuote();
   writeRandomQuote();
 </script>
 
+BODY:
+<script type="text/javascript">writeRandomQuote();</script>
 
+
+
+____________________________________________________________________________________
 
 
 
