@@ -1,51 +1,116 @@
-<!-- html block -->
+--------------------------------------- HTML ---------------------------------------
 
-<div id="date">Loading today's date...</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Theme Changer</title>
+    <link id="theme-stylesheet" rel="stylesheet" href="default.css"> <!-- Default stylesheet -->
+</head>
+<body>
+    <h1>Choose a Color Theme</h1>
+    <button id="red-theme">Red Theme</button>
+    <button id="blue-theme">Blue Theme</button>
+    <button id="green-theme">Green Theme</button>
+    <button id="reset-theme">Reset Theme</button>
 
-<!-- javascript -->
+    <script src="script.js"></script>
+</body>
+</html>
 
-// Function to format the date
-function formatDate(date) {
-    // Get the day, month, and year from the date object
-    const day = date.getDate(); // Get the day of the month (1-31)
-    const month = date.getMonth() + 1; // Get the month (0-11), so we add 1
-    const year = date.getFullYear(); // Get the full year (e.g., 2023)
+------------------------------------ CSS THEME1 ------------------------------------
 
-    // Format the date as "MM/DD/YYYY"
-    return `${month}/${day}/${year}`;
+/* default.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: white; /* Default background color */
+    color: black; /* Default text color */
+    transition: background-color 0.5s, color 0.5s; /* Smooth transition for color changes */
 }
 
-// Function to display today's date
-function displayTodaysDate() {
-    // Create a new Date object for the current date and time
-    const today = new Date();
-
-    // Format the date using the formatDate function
-    const formattedDate = formatDate(today);
-
-    // Update the content of the HTML element with the ID 'date'
-    document.getElementById('date').textContent = `Today's Date: ${formattedDate}`;
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-// Add an event listener to run the displayTodaysDate function when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', displayTodaysDate);
+------------------------------------ CSS THEME2 ------------------------------------
+
+/* themes.css */
+.red-theme {
+    background-color: red; /* Red background */
+    color: white; /* White text */
+}
+
+.blue-theme {
+    background-color: blue; /* Blue background */
+    color: white; /* White text */
+}
+
+.green-theme {
+    background-color: green; /* Green background */
+    color: white; /* White text */
+}
+
+------------------------------------ JAVASCRIPT ------------------------------------
+
+// Function to change the color theme
+function changeTheme(themeClass) {
+    // Get the theme stylesheet link element
+    const themeStylesheet = document.getElementById('theme-stylesheet');
+
+    // Remove any existing theme classes
+    themeStylesheet.className = ''; // Clear existing classes
+
+    // Add the new theme class
+    if (themeClass) {
+        themeStylesheet.classList.add(themeClass);
+    }
+}
+
+// Event listener for the red theme button
+document.getElementById('red-theme').addEventListener('click', function() {
+    changeTheme('red-theme'); // Change to red theme
+});
+
+// Event listener for the blue theme button
+document.getElementById('blue-theme').addEventListener('click', function() {
+    changeTheme('blue-theme'); // Change to blue theme
+});
+
+// Event listener for the green theme button
+document.getElementById('green-theme').addEventListener('click', function() {
+    changeTheme('green-theme'); // Change to green theme
+});
+
+// Event listener for the reset theme button
+document.getElementById('reset-theme').addEventListener('click', function() {
+    changeTheme(''); // Reset to default theme
+});
+
+-------------------------------------- UITLEG --------------------------------------
+
+  1) HTML Structure:
+      - The HTML file links to the default stylesheet (default.css) using a <link> tag with an id of themes stylesheet. This allows us to dynamically change the stylesheet later.
+  
+  2) Default Stylesheet (default.css):
+      - This stylesheet contains the default styles for the body and buttons. The body has a white background and black text.
+  
+  3) Theme Stylesheet (themes.css):
+      - This stylesheet defines classes for different themes (red, blue, green). Each class sets the background color and text color.
+  
+  2) Default Stylesheet (default.css):
+      - The changeTheme function takes a themeClass parameter, which is the class name for the selected theme.
+      - It retrieves the <link> element for the stylesheet and clears any existing theme classes.
+      - It adds the new theme class to the stylesheet link element.
+      - Event listeners are added to each button to call the changeTheme function with the appropriate class name when clicked.
 
 
-Explanation of the JavaScript Code
-  1) Function to Format the Date:
-      - We define a function called formatDate that takes a Date object as an argument.
-      - Inside this function, we extract the day, month, and year from the Date object using the appropriate methods:
-          - getDate(): Returns the day of the month (1-31).
-          - getMonth(): Returns the month (0-11), so we add 1 to get the correct month number.
-          - getFullYear(): Returns the full year (e.g., 2023).
-      - We then format the date as a string in the "MM/DD/YYYY" format and return it.
-  
-  2) Function to Display Today's Date:
-      - We define another function called displayTodaysDate.
-      - Inside this function, we create a new Date object called today, which represents the current date and time.
-      - We call the formatDate function to get the formatted date string.
-      - Finally, we update the text content of the HTML element with the ID date to display the formatted date.
-  
-  3) Event Listener for DOMContentLoaded:
-      - We add an event listener to the document that listens for the DOMContentLoaded event. This event fires when the initial HTML document has been completely loaded and parsed.
-      - When this event occurs, the displayTodaysDate function is called, which displays today's date.
+____________________________________________________________________________________
