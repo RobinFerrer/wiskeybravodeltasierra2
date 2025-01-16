@@ -1,0 +1,51 @@
+<!-- html block -->
+
+<div id="date">Loading today's date...</div>
+
+<!-- javascript -->
+
+// Function to format the date
+function formatDate(date) {
+    // Get the day, month, and year from the date object
+    const day = date.getDate(); // Get the day of the month (1-31)
+    const month = date.getMonth() + 1; // Get the month (0-11), so we add 1
+    const year = date.getFullYear(); // Get the full year (e.g., 2023)
+
+    // Format the date as "MM/DD/YYYY"
+    return `${month}/${day}/${year}`;
+}
+
+// Function to display today's date
+function displayTodaysDate() {
+    // Create a new Date object for the current date and time
+    const today = new Date();
+
+    // Format the date using the formatDate function
+    const formattedDate = formatDate(today);
+
+    // Update the content of the HTML element with the ID 'date'
+    document.getElementById('date').textContent = `Today's Date: ${formattedDate}`;
+}
+
+// Add an event listener to run the displayTodaysDate function when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', displayTodaysDate);
+
+
+Explanation of the JavaScript Code
+  1) Function to Format the Date:
+      - We define a function called formatDate that takes a Date object as an argument.
+      - Inside this function, we extract the day, month, and year from the Date object using the appropriate methods:
+          - getDate(): Returns the day of the month (1-31).
+          - getMonth(): Returns the month (0-11), so we add 1 to get the correct month number.
+          - getFullYear(): Returns the full year (e.g., 2023).
+      - We then format the date as a string in the "MM/DD/YYYY" format and return it.
+  
+  2) Function to Display Today's Date:
+      - We define another function called displayTodaysDate.
+      - Inside this function, we create a new Date object called today, which represents the current date and time.
+      - We call the formatDate function to get the formatted date string.
+      - Finally, we update the text content of the HTML element with the ID date to display the formatted date.
+  
+  3) Event Listener for DOMContentLoaded:
+      - We add an event listener to the document that listens for the DOMContentLoaded event. This event fires when the initial HTML document has been completely loaded and parsed.
+      - When this event occurs, the displayTodaysDate function is called, which displays today's date.
