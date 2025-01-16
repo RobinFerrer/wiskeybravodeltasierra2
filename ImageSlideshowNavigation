@@ -1,0 +1,104 @@
+--------------------------------------- HTML ---------------------------------------
+
+HEAD
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  #image-container {
+    border: 2px solid #333;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 300px; /* Set a fixed width for the image container */
+    height: 200px; /* Set a fixed height for the image container */
+    overflow: hidden; /* Hide overflow */
+   }
+   img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block; /* Ensure the image is displayed as a block element */
+   }
+   button {
+     margin: 5px;
+     padding: 10px 15px;
+     font-size: 16px;
+     cursor: pointer;
+    }
+</style>
+
+BODY:
+<div id="image-container">
+        <img id="current-image" src="" alt="Image">
+    </div>
+    <div>
+        <button id="prev">Previous</button>
+        <button id="next">Next</button>
+    </div>
+
+------------------------------------ JAVASCRIPT ------------------------------------
+
+// Array of image file names
+const images = [
+    'images/image1.jpg', // Replace with your actual image paths
+    'images/image2.jpg',
+    'images/image3.jpg',
+    'images/image4.jpg'
+];
+
+let currentIndex = 0; // Current index of the displayed image
+
+// Function to show the image based on the current index
+function showImage(index) {
+    const imgElement = document.getElementById('current-image'); // Get the image element
+    imgElement.src = images[index]; // Set the source of the image to the current index
+}
+
+// Function to go to the next image
+function nextImage() {
+    currentIndex++; // Increment the index
+    if (currentIndex >= images.length) {
+        currentIndex = 0; // If at the end, loop back to the first image
+    }
+    showImage(currentIndex); // Show the new image
+}
+
+// Function to go to the previous image
+function prevImage() {
+    currentIndex--; // Decrement the index
+    if (currentIndex < 0) {
+        currentIndex = images.length - 1; // If at the beginning, loop back to the last image
+    }
+    showImage(currentIndex); // Show the new image
+}
+
+// Event listeners for the buttons
+document.getElementById('next').addEventListener('click', nextImage); // Next button
+document.getElementById('prev').addEventListener('click', prevImage); // Previous button
+
+// Load the first image when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    showImage(currentIndex); // Show the first image
+});
+
+-------------------------------------- UITLEG --------------------------------------
+
+  1) HTML Structure:
+      - The HTML file contains a div with an img element to display the current image.
+      - There are two buttons: "Previous" and "Next" for navigating through the images.
+  
+  2) JavaScript Code:
+      - An array named images holds the paths to the image files. Make sure to replace the paths with the actual paths to your images.
+      - A variable currentIndex keeps track of the currently displayed image index.
+      - The showImage(index) function updates the src attribute of the img element to display the image at the specified index.
+      - The nextImage() function increments the currentIndex and wraps around to the first image if it exceeds the array length.
+      - The prevImage() function decrements the currentIndex and wraps around to the last image if it goes below zero.
+      - Event listeners are added to the buttons to call the respective functions when clicked.
+      - The first image is displayed when the DOM content is fully loaded.
+
+
+____________________________________________________________________________________
