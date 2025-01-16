@@ -1,9 +1,9 @@
-<!-- html block -->
+HTML BLOCK --------------------------------------------------------------------
 
 <div id="quote">Click the button to generate a quote!</div>
 <button id="new-quote">New Quote</button>
 
-<!-- javascript -->
+JAVASCRIPT --------------------------------------------------------------------
 
 const quotes = [
     "The greatest glory in living lies not in never falling, but in rising every time we fall",
@@ -26,7 +26,7 @@ document.getElementById('new-quote').addEventListener('click', generateRandomQuo
 generateRandomQuote();
 
 
-Explanation of the JavaScript Code
+EXPLANATION -------------------------------------------------------------------
   1) Array of Quotes:
       - We create an array called quotes that contains a list of quotes. Each quote is a string.
   
@@ -41,6 +41,23 @@ Explanation of the JavaScript Code
   
   4) Initial Quote Generation:
       - We call generateRandomQuote() once when the page loads to display an initial quote.
+
+VOLGENDS CURSUS ---------------------------------------------------------------
+
+<script type="text/javascript">
+  writeRandomQuote = function () {
+    var quotes = new Array();
+    quotes[0] = "Action is the real measure of intelligence.";
+    quotes[1] = "Baseball has the great advantage over cricket of being sooner ended.";
+    quotes[2] = "Every goal, every action, every thought, every feeling one experiences, whether it be consciously or unconsciously known, is an attempt to increase one's level of peace of mind.";
+    quotes[3] = "A good head and a good heart are always a formidable combination.";
+    var rand = Math.floor(Math.random()*quotes.length);
+    document.write(quotes[rand]);
+  }
+  writeRandomQuote();
+</script>
+
+
 
 
 
