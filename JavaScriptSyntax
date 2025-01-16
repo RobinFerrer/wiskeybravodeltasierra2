@@ -1,0 +1,166 @@
+--------------------------------- DECLARE VARIABLE ---------------------------------
+
+// Using var (function-scoped)
+var name = "Alice";
+
+// Using let (block-scoped)
+let age = 25;
+
+// Using const (block-scoped, cannot be reassigned)
+const pi = 3.14;
+
+------------------------------------ DATA TYPES ------------------------------------
+
+// String
+let greeting = "Hello, World!";
+
+// Number
+let score = 100;
+
+// Boolean
+let isActive = true;
+
+// Array
+let fruits = ["apple", "banana", "cherry"];
+
+// Object
+let person = {
+    name: "Alice",
+    age: 25,
+    isStudent: false
+};
+
+------------------------------------- OPERATOR -------------------------------------
+
+// Arithmetic Operators
+let sum = 5 + 3; // Addition
+let difference = 5 - 3; // Subtraction
+let product = 5 * 3; // Multiplication
+let quotient = 5 / 3; // Division
+let remainder = 5 % 3; // Modulus
+
+// Comparison Operators
+let isEqual = (5 == 5); // true
+let isStrictEqual = (5 === '5'); // false (strict equality)
+let isGreater = (5 > 3); // true
+
+// Logical Operators
+let andCondition = (true && false); // false
+let orCondition = (true || false); // true
+
+-------------------------------- CONTROL STRUCTURES --------------------------------
+
+// If-Else Statement
+let score = 85;
+if (score >= 90) {
+    console.log("Grade: A");
+} else if (score >= 80) {
+    console.log("Grade: B");
+} else {
+    console.log("Grade: C");
+}
+
+// Switch Statement
+let fruit = "banana";
+switch (fruit) {
+    case "apple":
+        console.log("It's an apple.");
+        break;
+    case "banana":
+        console.log("It's a banana.");
+        break;
+    default:
+        console.log("Unknown fruit.");
+}
+
+// For Loop
+for (let i = 0; i < 5; i++) {
+    console.log("Iteration: " + i);
+}
+
+// While Loop
+let count = 0;
+while (count < 5) {
+    console.log("Count: " + count);
+    count++;
+}
+
+------------------------------------- FUNCTION -------------------------------------
+
+// Function Declaration
+function greet(name) {
+    return "Hello, " + name + "!";
+}
+
+// Function Expression
+const add = function(a, b) {
+    return a + b;
+};
+
+// Arrow Function (ES6)
+const multiply = (a, b) => a * b;
+
+// Calling Functions
+console.log(greet("Alice")); // "Hello, Alice!"
+console.log(add(5, 3)); // 8
+console.log(multiply(5, 3)); // 15
+
+-------------------------------------- ARRAYS --------------------------------------
+
+// Creating an Array
+let colors = ["red", "green", "blue"];
+
+// Accessing Elements
+console.log(colors[0]); // "red"
+
+// Adding Elements
+colors.push("yellow"); // Adds "yellow" to the end
+console.log(colors); // ["red", "green", "blue", "yellow"]
+
+// Removing Elements
+colors.pop(); // Removes the last element
+console.log(colors); // ["red", "green", "blue"]
+
+// Iterating Over an Array
+colors.forEach(color => {
+    console.log(color);
+});
+
+-------------------------------------- OBJECT --------------------------------------
+
+// Creating an Object
+let car = {
+    make: "Toyota",
+    model: "Camry",
+    year: 2020,
+    displayInfo: function() {
+        return `${this.make} ${this.model} (${this.year})`;
+    }
+};
+
+// Accessing Object Properties
+console.log(car.make); // "Toyota"
+
+// Calling Object Method
+console.log(car.displayInfo()); // "Toyota Camry (2020)"
+
+---------------------------------- ERROR HANDLING ----------------------------------
+
+try {
+    // Code that may throw an error
+    let result = riskyFunction();
+} catch (error) {
+    // Handle the error
+    console.error("An error occurred: " + error.message);
+} finally {
+    // Code that will run regardless of an error
+    console.log("Execution completed.");
+}
+
+
+____________________________________________________________________________________
+
+
+
+
+
