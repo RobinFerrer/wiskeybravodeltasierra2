@@ -1,9 +1,9 @@
-HTML BLOCK --------------------------------------------------------------------
+--------------------------------------- HTML ---------------------------------------
 
 <div id="quote">Click the button to generate a quote!</div>
 <button id="new-quote">New Quote</button>
 
-JAVASCRIPT --------------------------------------------------------------------
+------------------------------------ JAVASCRIPT ------------------------------------
 
 const quotes = [
     "The greatest glory in living lies not in never falling, but in rising every time we fall",
@@ -26,7 +26,8 @@ document.getElementById('new-quote').addEventListener('click', generateRandomQuo
 generateRandomQuote();
 
 
-EXPLANATION -------------------------------------------------------------------
+-------------------------------------- UITLEG --------------------------------------
+
   1) Array of Quotes:
       - We create an array called quotes that contains a list of quotes. Each quote is a string.
   
@@ -42,7 +43,7 @@ EXPLANATION -------------------------------------------------------------------
   4) Initial Quote Generation:
       - We call generateRandomQuote() once when the page loads to display an initial quote.
 
-VOLGENDS CURSUS ---------------------------------------------------------------
+-------------------------------------- CURSUS --------------------------------------
 
 <script type="text/javascript">
   writeRandomQuote = function () {
