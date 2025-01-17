@@ -1,0 +1,69 @@
+--------------------------------------- HTML ---------------------------------------
+
+<div id="image-container">
+  <img id="current-image" src="" alt="Image">
+</div>
+
+------------------------------------ JAVASCRIPT ------------------------------------
+
+// Array of image file names
+const images = [
+    'images/image1.jpg', // Replace with your actual image paths
+    'images/image2.jpg',
+    'images/image3.jpg',
+    'images/image4.jpg',
+    'images/image5.jpg'
+];
+
+let currentIndex = 0; // Current index of the displayed image
+let intervalId; // Variable to hold the interval ID for the slideshow
+
+// Function to show the image based on the current index
+function showImage(index) {
+    const imgElement = document.getElementById('current-image'); // Get the image element
+    imgElement.src = images[index]; // Set the source of the image to the current index
+}
+
+// Function to go to the next image
+function nextImage() {
+    currentIndex++; // Increment the index
+    if (currentIndex >= images.length) {
+        currentIndex = 0; // If at the end, loop back to the first image
+    }
+    showImage(currentIndex); // Show the new image
+}
+
+// Function to start the automatic slideshow
+function startSlideshow() {
+    intervalId = setInterval(nextImage, 3000); // Change image every 3 seconds (3000 milliseconds)
+}
+
+// Function to stop the automatic slideshow
+function stopSlideshow() {
+    clearInterval(intervalId); // Clear the interval
+}
+
+// Load the first image when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    showImage(currentIndex); // Show the first image
+    startSlideshow(); // Start the automatic slideshow
+});
+
+-------------------------------------- UITLEG --------------------------------------
+
+  1) HTML Structure:
+      - The HTML file contains a div with an img element to display the current image.
+      - There are two buttons: "Previous" and "Next" for navigating through the images.
+  
+  2) JavaScript Code:
+      - An array named images holds the paths to the image files. Make sure to replace the paths with the actual paths to your images.
+      - A variable currentIndex keeps track of the currently displayed image index.
+      - A variable intervalId is used to store the ID of the interval for the slideshow.
+      - The showImage(index) function updates the src attribute of the img element to display the image at the specified index.
+      - The nextImage() function increments the currentIndex and wraps around to the first image if it exceeds the array length.
+      - The startSlideshow() function sets an interval that calls nextImage() every 3 seconds (3000 milliseconds).
+      - The stopSlideshow() function clears the interval, stopping the slideshow (though this function is not called in this example, you can add buttons to control it if needed).
+      - The first image is displayed when the DOM content is fully loaded, and the automatic slideshow starts immediately.
+
+
+____________________________________________________________________________________
