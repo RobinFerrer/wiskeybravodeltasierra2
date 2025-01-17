@@ -1,46 +1,86 @@
-// Function to validate the form
-function ValidateForm() {
-    // Get the form fields
-    var fname = document.getElementById("fname");
-    var lname = document.getElementById("lname");
-    var email = document.getElementById("email");
-    var tel = document.getElementById("tel");
-    var product = document.getElementById("product");
-    var opmerking = document.getElementById("opmerking");
-    var errorElement = document.getElementById("error");
+--------------------------------------- HTML ---------------------------------------
 
-    // Regular expression patterns
-    var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    var phonePattern = /^\d{10}$/;
+<h2>User Registration</h2>
+<form id="registrationForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    
+    <div id="errorMessages" class="error"></div>
+    
+    <input type="submit" value="Register">
+</form>
 
-    // Check if all fields are filled
-    if (
-        fname.value === "" ||
-        lname.value === "" ||
-        email.value === "" ||
-        tel.value === "" ||
-        product.value === "" ||
-        opmerking.value === ""
-    ) {
-        errorElement.textContent = "Vul alle velden in alstublieft.";
-        return false;
+------------------------------------ JAVASCRIPT ------------------------------------
+
+const registrationForm = document.getElementById("registrationForm");
+    const errorMessages = document.getElementById("errorMessages");
+
+    registrationForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const { username, email, password } = registrationForm.elements;
+        errorMessages.innerHTML = ""; // Clear previous error messages
+
+        // Validate username
+        if (!username.value.trim()) {
+            displayError("Username is required.");
+            return;
+        }
+
+        // Validate email
+        if (!email.value.trim() || !isValidEmail(email.value)) {
+            displayError("Please enter a valid email address.");
+            return;
+        }
+
+        // Validate password
+        if (!password.value.trim() || !isStrongPassword(password.value)) {
+            displayError("Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.");
+            return;
+        }
+
+        alert("Registration successful!");
+        registrationForm.reset(); // Reset the form
+    });
+
+    function displayError(message) {
+        errorMessages.innerHTML += `<p>${message}</p>`;
     }
 
-    // Validate email address
-    if (!emailPattern.test(email.value)) {
-        errorElement.textContent = "Onjuist emailadres.";
-        email.focus();
-        return false;
+    function isValidEmail(email) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
     }
 
-    // Validate phone number
-    if (!phonePattern.test(tel.value)) {
-        errorElement.textContent = "Onjuist telefoonnummer.";
-        tel.focus();
-        return false;
+    function isStrongPassword(password) {
+        const strongPasswordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+        return strongPasswordPattern.test(password);
     }
 
-    // If all checks pass, submit the form
-    errorElement.textContent = "Bedankt";
-    return true;
-}
+-------------------------------------- UITLEG --------------------------------------
+
+  1) HTML Structure:
+      - The form includes three fields: username, email, and password, each marked as required.
+      - An error message container (<div id="errorMessages">) is included to display validation errors.
+  
+  2) CSS Styles:
+      - Basic styling is applied to the form for better presentation.
+  
+  3) JavaScript Validation:
+      - An event listener is added to the form's submit event to handle validation.
+      - The event.preventDefault() method prevents the default form submission behavior.
+      - Each input is validated:
+          - Username: Must not be empty.
+          - Email: Must match a valid email format using a regular expression.
+          - Password: Must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character.
+      - If any validation fails, an error message is displayed in the errorMessages div.
+      - If all validations pass, a success message is shown, and the form is reset.
+
+
+____________________________________________________________________________________
