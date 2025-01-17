@@ -1,0 +1,104 @@
+--------------------------------------- HTML ---------------------------------------
+
+<div id="image-container">
+  <img id="current-image" src="" alt="Image">
+</div>
+
+------------------------------------ JAVASCRIPT ------------------------------------
+
+// Get the button and timer display elements
+const startButton = document.getElementById('start-timer');
+const pauseButton = document.getElementById('pause-timer');
+const resetButton = document.getElementById('reset-timer');
+const timerDisplay = document.getElementById('timer-display');
+
+// Set the default countdown duration (3 hours in milliseconds)
+let countdownDuration = 3 * 60 * 60 * 1000;
+
+// Initialize the countdown timer
+let countdownTimer = null;
+let timeRemaining = countdownDuration;
+let isPaused = true;
+let isRunning = false;
+
+// Function to update the timer display
+function updateTimerDisplay (timeRemaining) {
+    const hours = Math.floor(timeRemaining / (60 * 60 * 1000));
+    const minutes = Math.floor((timeRemaining % (60 * 60 * 1000)) / (60 * 1000));
+    const seconds = Math.floor((timeRemaining % (60 * 1000)) / 1000);
+
+    timerDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+// Function to start the countdown timer
+function startCountdown () {
+    // Clear any existing timer
+    if (countdownTimer) {
+        clearInterval(countdownTimer);
+    }
+
+    // Update the timer display
+    updateTimerDisplay(timeRemaining);
+
+    // Start the countdown timer
+    countdownTimer = setInterval(() => {
+        timeRemaining -= 1000; // decrement by 1 second
+
+        // Update the timer display
+        updateTimerDisplay(timeRemaining);
+
+        // Check if the countdown is complete
+        if (timeRemaining <= 0) {
+            clearInterval(countdownTimer);
+            timerDisplay.textContent = 'Countdown complete!';
+        }
+    }, 1000); // update every 1 second
+
+    isRunning = true;
+    isPaused = false;
+}
+
+// Function to pause or resume the countdown timer
+function togglePause () {
+    if (isRunning) {
+        if (isPaused) {
+            // Resume the countdown timer
+            countdownTimer = setInterval(() => {
+                timeRemaining -= 1000; // decrement by 1 second
+
+                // Update the timer display
+                updateTimerDisplay(timeRemaining);
+
+                // Check if the countdown is complete
+                if (timeRemaining <= 0) {
+                    clearInterval(countdownTimer);
+                    timerDisplay.textContent = 'Countdown complete!';
+                }
+            }, 1000); // update every 1 second
+
+            isPaused = false;
+            pauseButton.textContent = 'Pause';
+        } else {
+            // Pause the countdown timer
+            clearInterval(countdownTimer);
+            isPaused = true;
+            pauseButton.textContent = 'Resume';
+        }
+    }
+}
+
+// Function to reset the countdown timer
+function resetCountdown () {
+    clearInterval(countdownTimer);
+    timeRemaining = countdownDuration;
+    updateTimerDisplay(timeRemaining);
+    isRunning = false;
+    isPaused = true;
+    pauseButton.textContent = 'Pause';
+}
+
+// Add event listeners to the buttons
+startButton.addEventListener('click', startCountdown);
+pauseButton.addEventListener('click', togglePause);
+resetButton.addEventListener('click', resetCountdown);
+setCustomTimerButton.addEventListener('click', setCustomCountdown);
